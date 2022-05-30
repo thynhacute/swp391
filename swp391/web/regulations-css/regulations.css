@@ -1,0 +1,42 @@
+.img-fluid, .img-thumbnail {
+    max-width: 100%;
+    height: auto;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.logo-title {
+    color: #0066B2;
+}
+.logo-title {
+    color: #0066B2;
+}
+.media-label {
+    text-align: center;
+    color: #F27229;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    height: 50px;
+    width: 30px;
+    outline: #F27229;
+    background-color: #f27229;
+    background-size: 50%, 50%;
+    border-radius: 10%;
+    border: 1px solid #F27229;
+}
+body{
+    background-image: url("/regulations-css/imge/background/a.jpg");
+}
+.ol {
+    color: aliceblue;
+    font-size: 1.4625rem;
+    
+}
+li strong{
+    color: aliceblue;
+    font-size: 1.4625rem;
+}
+.OJT{
+    font-size: 4.5125rem;
+}
