@@ -4,7 +4,7 @@
  */
 package sample.utils;
 
-import com.sun.tools.javac.resources.compiler;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ public class DBUtils {
         Connection conn= null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         String url="jdbc:sqlserver://localhost:1433;databaseName=OJTMay26Management";
-        conn = DriverManager.getConnection(url,"sa","12");
+        conn = DriverManager.getConnection(url,"sa","nicesu03302019");
         return conn;
     }
 }
