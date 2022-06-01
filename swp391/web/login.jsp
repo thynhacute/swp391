@@ -57,9 +57,7 @@
 
 
 
-                    <div class="footer-w3l">
-                        <p class="agile"> ©  <a href="http://hcmuni.fpt.edu.vn/">Đại học FPT 2022</a></p>
-                    </div>
+                    
                     <style type="text/css">
                         form.login-container input {
                             padding: 13px;
