@@ -24,7 +24,7 @@ public class LoginController extends HttpServlet {
 
     private static final String ERROR = "login.jsp";
     private static final String AD = "AD";
-    private static final String ADMIN_PAGE = "admin.jsp";
+    private static final String ADMIN_PAGE = "HomeAdminController";
     private static final String ST = "ST";
     private static final String STUDENT_PAGE = "student.jsp";
     private static final String RE = "RE";
@@ -39,25 +39,26 @@ public class LoginController extends HttpServlet {
             String password = request.getParameter("password");
             UserDAO dao = new UserDAO();
             UserDTO loginUser = dao.checkLogin(userID, password);
+            
             if (loginUser != null) {
                 String roleID = loginUser.getRoleID();
                 HttpSession session = request.getSession();
                 if (AD.equals(roleID)) {
                     session.setAttribute("LOGIN_USER", loginUser);
+                                       
                     url = ADMIN_PAGE;
                 } else if (ST.equals(roleID)) {
-                    session.setAttribute("LOGIN_USER", loginUser);//1 session va 2 request
+                    session.setAttribute("LOGIN_USER", loginUser);
                     url = STUDENT_PAGE;
                 } else if (RE.equals(roleID)) {
                     session.setAttribute("LOGIN_USER", loginUser);//1 session va 2 request
                     url = RECRUITER_PAGE;
                 } else {
-                    request.setAttribute("ERROR_MESSAGE", "Your role is not support");//còn param user role action
-                    //tạo Attribute ở Requesst cope
+                    request.setAttribute("ERROR_MESSAGE", "Your role is not support");
                 }
 
             } else {
-                request.setAttribute("ERROR_MESSAGE", "Incorrect userID or password");//3c param atribute 
+                request.setAttribute("ERROR_MESSAGE", "Incorrect userID or password");
             }
         } catch (Exception e) {
             log("Error at LoginController:" + e.toString());

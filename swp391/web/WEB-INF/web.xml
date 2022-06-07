@@ -8,6 +8,26 @@
         <servlet-name>MainController</servlet-name>
         <servlet-class>sample.controllers.MainController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>sample.controllers.HomeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListDoneOJTController</servlet-name>
+        <servlet-class>sample.controllers.ListDoneOJTController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListPostJobController</servlet-name>
+        <servlet-class>sample.controllers.ListPostJobController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FeedbackController</servlet-name>
+        <servlet-class>sample.controllers.FeedbackController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewsController</servlet-name>
+        <servlet-class>sample.controllers.NewsController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -16,12 +36,32 @@
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/HomeAdminController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListDoneOJTController</servlet-name>
+        <url-pattern>/ListDoneOJTController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListPostJobController</servlet-name>
+        <url-pattern>/ListPostJobController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbackController</servlet-name>
+        <url-pattern>/FeedbackController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewsController</servlet-name>
+        <url-pattern>/NewsController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>contact.jsp</welcome-file>
+        <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

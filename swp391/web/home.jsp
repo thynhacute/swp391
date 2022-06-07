@@ -50,7 +50,7 @@
                         </li>
                         <li><a href="#">Hồ sơ ứng viên</a></li>
                         <li><a href="#">Liên hệ</a></li>
-                        <li><a href="#">Đăng nhập</a></li>
+                        <li><a href="login.jsp">Đăng nhập</a></li>
                     </ul>
                 </div>
             </nav>
