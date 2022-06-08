@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import static jdk.nashorn.internal.objects.NativeJava.type;
 import sample.utils.DBUtils;
 
 /**
