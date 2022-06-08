@@ -17,8 +17,10 @@ import javax.servlet.http.HttpSession;
  * @author THAI
  */
 public class MainController extends HttpServlet {
+
     private static final String ERROR = "error.jsp";
     private static final String LOGIN = "LoginController";
+    private static final String HOME_SEARCH = "HomeSearchController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -26,15 +28,17 @@ public class MainController extends HttpServlet {
         String url = ERROR;
         try {
             String action = request.getParameter("action");
-            if("Login".equals(action)){
+            if ("Login".equals(action)) {
                 url = LOGIN;
-            }else{
+            } else if ("Home_Search".equals(action)) {
+                url = HOME_SEARCH;
+            } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("ERROR_MESSAGE", "Function is not availble");
             }
         } catch (Exception e) {
             log("Error at MainController" + e.toString());
-        }finally{
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
 
         }

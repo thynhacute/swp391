@@ -1,9 +1,3 @@
-<%-- 
-    Document   : student
-    Created on : May 22, 2022, 4:51:42 PM
-    Author     : THAI
---%>
-
 <%@page import="org.apache.catalina.User"%>
 <%@page import="sample.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

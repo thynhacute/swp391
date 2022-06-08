@@ -8,6 +8,10 @@
         <servlet-name>MainController</servlet-name>
         <servlet-class>sample.controllers.MainController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeSearchController</servlet-name>
+        <servlet-class>sample.controllers.HomeSearchController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeSearchController</servlet-name>
+        <url-pattern>/HomeSearchController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

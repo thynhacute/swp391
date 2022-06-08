@@ -4,10 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/src/java/sample/utils/DBUtils.java</file>
-            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/web/admin.jsp</file>
+            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/web/student.jsp</file>
+            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/src/java/sample/user/UserDAO.java</file>
             <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/web/error.jsp</file>
-            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/web/login.jsp</file>
-            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/web/recruiter.jsp</file>
+            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/src/java/sample/user/UserDTO.java</file>
+            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/src/java/job/JobDTO.java</file>
+            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/src/java/sample/controllers/MainController.java</file>
+            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/src/java/job/JobDAO.java</file>
+            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/web/WEB-INF/web.xml</file>
+            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/web/home.jsp</file>
+            <file>file:/E:/file%20dzui/kỳ%205/SWP/swp391/swp391/swp391/src/java/sample/controllers/HomeSearchController.java</file>
         </group>
     </open-files>
 </project-private>
