@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import job.JobDAO;
 import job.JobDTO;
+import major.MajorDAO;
+import major.MajorDTO;
 
 /**
  *
@@ -33,17 +35,11 @@ public class HomeSearchController extends HttpServlet {
         String url = ERROR;
         try {
             String search = request.getParameter("search");
-            String searchByAddress = request.getParameter("searchByAddress");
             job.JobDAO dao = new JobDAO();
             List<JobDTO> list = dao.getListJob(search);
-            List<JobDTO> listByAddress = dao.getListJobByAddress(searchByAddress);
-            HttpSession session = request.getSession();
-            if (!list.isEmpty()) {
-                session.setAttribute("LIST_JOB", list);
+                request.setAttribute("LIST_JOB", list);
                 url = SUCCESS;
-            }else if(!listByAddress.isEmpty()){
-                session.setAttribute("LIST_JOB_BY_ADDRESS", listByAddress);
-            }
+          
         } catch (Exception e) {
             log("Error at HomeSearchController: " + e.toString());
         } finally {

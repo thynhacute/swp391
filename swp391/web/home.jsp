@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="major.MajorDTO"%>
+<%@page import="sample.user.UserDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="job.JobDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,17 +14,17 @@
         <title>OJT</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-        <link rel="stylesheet" href="css/bootstrap-social.css" />
-        <link rel="stylesheet" href="./home/styleOfHome.css">
+        <link rel="stylesheet" href="home/styleOfHome.css">
     </head>
 
     <body>
         <%
             String search = (String) request.getParameter("search");
-            String searchByAddress = (String) request.getParameter("searchByAddress");
+            String listMajor1 = (String) request.getParameter("listMajor1");
+            if (listMajor1 == null) {
+                listMajor1 = "";
+            }
             if (search == null) {
-                search = "";
-            } else if (searchByAddress == null) {
                 search = "";
             }
         %>
@@ -32,9 +33,9 @@
                 <nav>
                     <div class="menu">
                         <ul>
-                            <li><a href="#home.jsp">Trang chủ</a></li>
+                            <li><a href="home.jsp">Trang chủ</a></li>
                             <li>
-                                <a href="#">Giới thiệu</a>
+                                <a href="introduce.jsp">Giới thiệu</a>
                             </li>
                             <li>
                                 <a href="#">Tin hoạt động</a>
@@ -56,8 +57,31 @@
                                 </ul>
                             </li>
                             <li><a href="#">Hồ sơ ứng viên</a></li>
-                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Liên hệ</a></li>                           
+                                <%
+                                    UserDTO userLogin = (UserDTO) session.getAttribute("LOGIN_USER");
+                                    if (userLogin == null) {
+                                        userLogin = new UserDTO();
+
+                                %>
+
                             <li> <a href="login.jsp">Đăng nhập </a> </li>
+                                <% } else {
+                                %>
+
+                            <li>
+                                <a>
+                                    <%= userLogin.getFullName()%>
+                                </a>
+                                </button>
+                                <ul class="sub-menu">
+                                    <li><a href="login.jsp">Sign Out</a></li>
+                                </ul>
+                            </li>
+                            <%
+                                }
+
+                            %>
                         </ul>
                     </div>
                 </nav>
@@ -79,62 +103,46 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-4">
-                            <div class="fix-flex">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                    Ngành học
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="col-4">
-                            <div class="fix-flex">                                                           
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                    Địa điểm
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
+                            <form action="JobListController" method="POST"> 
+                                <div class="fix-flex">
+                                    Ngành học: 
+                                    <select class="btn-search" name="searchByMajor" onchange="this.form.submit()">
+                                        <%
+                                            List<MajorDTO> listMajor = (List<MajorDTO>) session.getAttribute("LIST_MAJOR");
+                                            if (listMajor != null) {
+                                                for (MajorDTO major : listMajor) {
+                                        %>  
+                                        <option value="<%= major.getMajorID()%>">
+                                            <%= major.getMajorID()%>
+                                        </option>
+
+                                        <%
+                                                }
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                            </form>
                         </div>
+
                         <div class="col-3 sort">
-                            <p>Sắp xếp theo:</p>
                             <div>
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                    Mặc định
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                     <div class="container row">
                         <div class="col-5">                         
                             <%
-                                List<JobDTO> list = (List<JobDTO>) session.getAttribute("LIST_JOB");
-                                if (list != null) {
-                                    if (!list.isEmpty()) {
-                                        for (JobDTO job : list) {
-                            %>                          
-                            <form action="MainController">
-                                <div class="cty">
+                                List<JobDTO> list = (List<JobDTO>) session.getAttribute("LIST_JOB_AUTO");
+                                List<JobDTO> list1 = (List<JobDTO>) request.getAttribute("LIST_JOB");
+                                List<JobDTO> list2 = (List<JobDTO>) request.getAttribute("LIST_JOB_BY_MAJOR");
+                                if (list != null && list2 == null && list1 == null) {
+                                    for (JobDTO job : list) {
+                            %>
+                            <form action="HomeNoUserController">
+                                <div class="container_list" >
                                     <div class="logocty ">
                                         <img src="<%= job.getImage()%>" alt=" ">
                                     </div>
@@ -145,15 +153,68 @@
                                         </a>
                                         <p><b><%= job.getTitle()%> </b></p>
                                         <p>
-                                            <%= job.getAddress()%>                                           
+                                            Address: <%= job.getAddress()%>                                           
                                         </p>
-                                        <p>Ngày tạo: 08-04-2022 - Bạn còn 13 ngày để ứng tuyển</p>
+                                        <p>Start date: <%=job.getStartDate()%></p>
+                                        <p>Price: <%= job.getPrice()%>$</p>
                                     </div>
                                 </div>
                             </form>
                             <%
-                                        }
                                     }
+                                }
+                                if (list2 != null && list1 == null && list != null) {
+                                    for (JobDTO job : list2) {
+                            %>
+
+                            <form action="HomeNoUserController">
+                                <div class="container_list" >
+                                    <div class="logocty ">
+                                        <img src="<%= job.getImage()%>" alt=" ">
+                                    </div>
+                                    <div class="description ">
+
+                                        <a href="https://career-hcmuni.fpt.edu.vn/career-opportunities/449 ">
+                                            [OJT - SUMMER 2022] CÔNG TY CỔ PHẦN GOLDEN APPLE
+                                        </a>
+                                        <p><b><%= job.getTitle()%> </b></p>
+                                        <p>
+                                            Address: <%= job.getAddress()%>                                           
+                                        </p>
+                                        <p>Start date: <%=job.getStartDate()%></p>
+                                        <p>Price: <%= job.getPrice()%>$</p>
+                                    </div>
+                                </div>
+                            </form>
+                            <%
+                                    }
+                                }
+                                if (list1 != null && list2 == null && list != null) {
+
+                                    for (JobDTO job : list1) {
+
+                            %>
+
+                            <form action="HomeNoUserController">
+                                <div class="container_list" >
+                                    <div class="logocty ">
+                                        <img src="<%= job.getImage()%>" alt=" ">
+                                    </div>
+                                    <div class="description ">
+
+                                        <a href="https://career-hcmuni.fpt.edu.vn/career-opportunities/449 ">
+                                            [OJT - SUMMER 2022] CÔNG TY CỔ PHẦN GOLDEN APPLE
+                                        </a>
+                                        <p><b><%= job.getTitle()%> </b></p>
+                                        <p>
+                                            Address: <%= job.getAddress()%>                                           
+                                        </p>
+                                        <p>Start date: <%=job.getStartDate()%></p>
+                                        <p>Price: <%= job.getPrice()%>$</p>
+                                    </div>
+                                </div>
+                            </form>
+                            <%                                    }
                                 }
                             %>
                         </div>

@@ -21,6 +21,7 @@ public class MainController extends HttpServlet {
     private static final String ERROR = "error.jsp";
     private static final String LOGIN = "LoginController";
     private static final String HOME_SEARCH = "HomeSearchController";
+    private static final String LIST_MAJOR = "MajorController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,6 +33,8 @@ public class MainController extends HttpServlet {
                 url = LOGIN;
             } else if ("Home_Search".equals(action)) {
                 url = HOME_SEARCH;
+            } else if ("List_Major".equals(action)) {
+                url = LIST_MAJOR;
             } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("ERROR_MESSAGE", "Function is not availble");

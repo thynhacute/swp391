@@ -14,23 +14,18 @@ public class JobDTO {
     private String jobID;
     private String title;
     private double price;
+    private int amount;
     private String description;
     private String duration;
     private String startDate;
+    private String endDate;
     private String bussinessID;
     private String image;
     private String address;
+    private boolean status;
 
     public JobDTO() {
-        this.jobID = "";
-        this.title = "";
-        this.price = 0;
-        this.description = "";
-        this.duration = "";
-        this.startDate = "";
-        this.bussinessID = "";
-        this.image = "";
-        this.address = "";
+
     }
 
     public JobDTO(String jobID, String title, double price, String description, String duration, String startDate, String bussinessID, String image, String address) {
@@ -116,4 +111,29 @@ public class JobDTO {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
 }

@@ -12,6 +12,14 @@
         <servlet-name>HomeSearchController</servlet-name>
         <servlet-class>sample.controllers.HomeSearchController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JobListController</servlet-name>
+        <servlet-class>sample.controllers.JobListController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MajorController</servlet-name>
+        <servlet-class>sample.controllers.MajorController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -24,12 +32,20 @@
         <servlet-name>HomeSearchController</servlet-name>
         <url-pattern>/HomeSearchController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JobListController</servlet-name>
+        <url-pattern>/JobListController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MajorController</servlet-name>
+        <url-pattern>/MajorController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>HomeNoUserController</welcome-file>
     </welcome-file-list>
 </web-app>

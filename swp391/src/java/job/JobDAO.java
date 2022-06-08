@@ -62,7 +62,7 @@ public class JobDAO {
         return list;
     }
 
-    public List<JobDTO> getListJobByAddress(String searchByAddress) throws SQLException {
+    public List<JobDTO> getListJobAuto() throws SQLException {
         List<JobDTO> list = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -70,11 +70,9 @@ public class JobDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "SELECT jobID, title, price, description, duration, startDate, bussinessID, image, address "
-                        + " FROM tblJob "
-                        + " WHERE address like ? ";
+                String sql = "  SELECT jobID, title, price, description, duration, startDate, image, address "
+                        + " FROM tblJob";
                 ptm = conn.prepareStatement(sql);
-                ptm.setString(1, "%" + searchByAddress + "%");
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     String jobID = rs.getString("jobID");
@@ -83,11 +81,10 @@ public class JobDAO {
                     String description = rs.getString("description");
                     String duration = rs.getString("duration");
                     String startDate = rs.getString("startDate");
-                    String bussinessID = rs.getString("bussinessID");
                     String image = rs.getString("image");
                     String address = rs.getString("address");
 
-                    list.add(new JobDTO(jobID, title, price, description, duration, startDate, bussinessID, image, address));
+                    list.add(new JobDTO(jobID, title, price, description, duration, startDate, "", image, address));
                 }
             }
         } catch (Exception e) {
@@ -104,4 +101,47 @@ public class JobDAO {
         }
         return list;
     }
+
+    public List<JobDTO> getListJobByMajor(String searchByMajor) throws SQLException {
+        List<JobDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                String sql = " SELECT J.jobID, J.title, J.price, j.description, j.duration, j.startDate, j.image, j.address "
+                        + " FROM tblJob J, tblRequestMajor RM, tblMajor M "
+                        + " WHERE J.jobID = RM.jobID and RM.majorID = M.majorID and M.majorID = ? ";
+                ptm = conn.prepareStatement(sql);
+                ptm.setString(1, searchByMajor);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String jobID = rs.getString("jobID");
+                    String title = rs.getString("title");
+                    double price = rs.getDouble("price");
+                    String description = rs.getString("description");
+                    String duration = rs.getString("duration");
+                    String startDate = rs.getString("startDate");
+                    String image = rs.getString("image");
+                    String address = rs.getString("address");
+
+                    list.add(new JobDTO(jobID, title, price, description, duration, startDate, "", image, address));
+                }
+            }
+        } catch (Exception e) {
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list;
+    }
+
 }
