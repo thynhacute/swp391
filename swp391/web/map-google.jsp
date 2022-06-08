@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="index.jsp">
+                            <a href="HomeAdminController">
                                 <img class="img-fluid" src="assets/images/logo-background/logo-fpt-certificate.png" style="width: 60%;" alt="Theme-Logo" />
                             </a>
                             <a class="mobile-options waves-effect waves-light">
@@ -165,7 +165,7 @@
                                 <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Managerment</div>
                                 <ul class="pcoded-item pcoded-left-item">
                                     <li class="">
-                                        <a href="       " class="waves-effect waves-dark">
+                                        <a href="HomeAdminController" class="waves-effect waves-dark">
                                             <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                             <span class="pcoded-mtext" data-i18n="nav.dash.main">Home</span>
                                             <span class="pcoded-mcaret"></span>
